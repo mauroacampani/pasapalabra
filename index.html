@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Juego Pasapalabras con las letras del abecedario. HTML, CSS y JavaScript vanilla." />
+  <title>Pasapalabras</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <h1 class="header__title">Pasapalabras</h1>
+      <p class="header__subtitle">Completa el rosco letra por letra antes de que se acabe el tiempo</p>
+    </header>
+
+    <main class="main">
+      <!-- Configuración y controles -->
+      <section class="card settings" aria-label="Configuración de la partida">
+        <div class="settings__field">
+          <label class="settings__label" for="time-config">Tiempo (segundos)</label>
+          <input
+            class="settings__input"
+            type="number"
+            id="time-config"
+            name="time-config"
+            min="1"
+            step="1"
+            value="60"
+            placeholder="Ej: 120"
+          />
+        </div>
+
+        <div class="controls" role="group" aria-label="Controles del juego">
+          <button class="btn btn--primary" type="button" id="btn-start">Iniciar</button>
+          <button class="btn" type="button" id="btn-pause" disabled>Pausar</button>
+          <button class="btn btn--ghost" type="button" id="btn-reset">Reiniciar</button>
+        </div>
+      </section>
+
+      <!-- Estado: temporizador y aciertos -->
+      <section class="card status" aria-label="Estado de la partida">
+        <div class="status__item">
+          <span class="status__label">Tiempo restante</span>
+          <span class="timer" id="timer" aria-live="polite">60</span>
+        </div>
+        <div class="status__item">
+          <span class="status__label">Aciertos</span>
+          <span class="score" id="score" aria-live="polite">Correctas: 0</span>
+        </div>
+      </section>
+
+      <!-- Rosco + pregunta/respuesta -->
+      <section class="game">
+        <div class="card rosco-card" aria-label="Rosco de letras">
+          <h2 class="card__title">Rosco</h2>
+          <!-- Las letras se generan desde js/app.js con buildRosco() -->
+          <ul class="rosco" id="rosco" aria-label="Letras del abecedario"></ul>
+          <p class="rosco__hint">Letra actual resaltada. Verde = correcta, rojo = incorrecta, gris = pasapalabra.</p>
+        </div>
+
+        <div class="card qa-card" aria-label="Pregunta y marcado manual">
+          <h2 class="card__title">Pregunta actual <span class="current-letter" id="current-letter">–</span></h2>
+          <p class="question" id="question-text" aria-live="polite">Aquí aparecerá la pregunta</p>
+
+          <div class="mark-row" role="group" aria-label="Marcar letra actual">
+            <button class="btn btn--success" type="button" id="btn-correct" disabled>✓ Correcta</button>
+            <button class="btn btn--danger" type="button" id="btn-wrong" disabled>✗ Incorrecta</button>
+            <button class="btn btn--secondary" type="button" id="btn-pass" disabled>Pasapalabra</button>
+          </div>
+          <p class="mark-hint">Correcta / Incorrecta avanzan con el tiempo corriendo. Pasapalabra detiene el tiempo: pulsa Continuar para seguir.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Pasapalabras · HTML5 + CSS3 + JavaScript vanilla · Sin dependencias</p>
+    </footer>
+  </div>
+</body>
+</html>

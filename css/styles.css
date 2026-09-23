@@ -1,0 +1,394 @@
+/* ==========================================================
+   Pasapalabras — styles.css
+   Vanilla CSS: variables, layout, rosco circular, estados.
+   ========================================================== */
+
+:root {
+  --bg: #0f172a;
+  --bg-soft: #1e293b;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --secondary: #f59e0b;
+  --border: #e2e8f0;
+
+  --pending-bg: #f1f5f9;
+  --pending-text: #0f172a;
+  --pending-border: #cbd5e1;
+
+  --correct-bg: #16a34a;
+  --correct-text: #ffffff;
+
+  --incorrect-bg: #dc2626;
+  --incorrect-text: #ffffff;
+
+  --passed-bg: #94a3b8;
+  --passed-text: #ffffff;
+
+  --current-ring: #2563eb;
+  --current-bg: #dbeafe;
+
+  --radius: 16px;
+  --shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+  background: radial-gradient(1200px 600px at 20% -10%, #2563eb33, transparent),
+    radial-gradient(1000px 500px at 90% 0%, #f59e0b26, transparent),
+    var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.page {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+
+/* ---------- Header ---------- */
+
+.header {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.header__title {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: -0.02em;
+}
+
+.header__subtitle {
+  margin: 8px 0 0;
+  color: #cbd5e1;
+}
+
+/* ---------- Cards / layout ---------- */
+
+.main {
+  display: grid;
+  gap: 16px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.card__title {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+}
+
+/* ---------- Settings + controls ---------- */
+
+.settings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.settings__field {
+  display: grid;
+  gap: 6px;
+}
+
+.settings__label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.settings__input {
+  width: 160px;
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: #f8fafc;
+  color: var(--text);
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.08s ease, background 0.15s ease, opacity 0.15s ease;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn--primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: var(--primary-dark);
+}
+
+.btn--secondary {
+  background: #fff7ed;
+  border-color: #fed7aa;
+  color: #9a3412;
+}
+
+.btn--success {
+  background: var(--correct-bg);
+  border-color: var(--correct-bg);
+  color: #fff;
+}
+
+.btn--danger {
+  background: var(--incorrect-bg);
+  border-color: var(--incorrect-bg);
+  color: #fff;
+}
+
+.btn--ghost {
+  background: transparent;
+}
+
+.btn:focus-visible,
+.settings__input:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 2px;
+}
+
+/* ---------- Status ---------- */
+
+.status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status__item {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.status__label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.timer {
+  font-size: 2rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  background: var(--bg);
+  color: #fff;
+  min-width: 84px;
+  text-align: center;
+  padding: 4px 14px;
+  border-radius: 12px;
+}
+
+.timer--warning {
+  background: #b45309;
+}
+
+.timer--danger {
+  background: var(--incorrect-bg);
+}
+
+.score {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* ---------- Game grid ---------- */
+
+.game {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 16px;
+  align-items: start;
+}
+
+@media (max-width: 820px) {
+  .game {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Rosco ---------- */
+
+.rosco {
+  --rosco-size: min(100%, 420px);
+  --rosco-radius: 178px;
+  list-style: none;
+  margin: 12px auto 8px;
+  padding: 24px;
+  position: relative;
+  width: var(--rosco-size);
+  aspect-ratio: 1;
+  max-width: 460px;
+}
+
+/* Cada .letter se posiciona en círculo vía --angle (la define JS).
+   rotate(angle) -> translate(radius) -> rotate(-angle) deja la letra legible.
+   JS aplica -90° de offset para que la A quede arriba (12 en punto). */
+.letter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 38px;
+  height: 38px;
+  margin: -19px 0 0 -19px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  border-radius: 50%;
+  background: var(--pending-bg);
+  color: var(--pending-text);
+  border: 2px solid var(--pending-border);
+  transform:
+    rotate(var(--angle, 0deg))
+    translate(var(--rosco-radius))
+    rotate(calc(var(--angle, 0deg) * -1));
+  transition: background 0.2s ease, transform 0.2s ease;
+  user-select: none;
+}
+
+/* Estados — solo clases, sin estilos inline desde JS */
+.letter--correct {
+  background: var(--correct-bg);
+  border-color: var(--correct-bg);
+  color: var(--correct-text);
+}
+
+.letter--incorrect {
+  background: var(--incorrect-bg);
+  border-color: var(--incorrect-bg);
+  color: var(--incorrect-text);
+}
+
+.letter--passed {
+  background: var(--passed-bg);
+  border-color: var(--passed-bg);
+  color: var(--passed-text);
+}
+
+.letter--current {
+  background: var(--current-bg);
+  border-color: var(--current-ring);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.25);
+  transform:
+    rotate(var(--angle, 0deg))
+    translate(var(--rosco-radius))
+    rotate(calc(var(--angle, 0deg) * -1))
+    scale(1.15);
+}
+
+.rosco__hint {
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* En pantallas chicas el círculo se achica y las letras también */
+@media (max-width: 480px) {
+  .rosco {
+    --rosco-radius: 138px;
+    padding: 16px;
+  }
+
+  .letter {
+    width: 30px;
+    height: 30px;
+    margin: -15px 0 0 -15px;
+    font-size: 0.8rem;
+  }
+}
+
+/* ---------- Pregunta / respuesta ---------- */
+
+.current-letter {
+  display: inline-grid;
+  place-items: center;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 8px;
+  border-radius: 10px;
+  background: var(--bg);
+  color: #fff;
+  vertical-align: middle;
+}
+
+.question {
+  background: #f8fafc;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  min-height: 72px;
+  margin: 0 0 14px;
+}
+
+.mark-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.mark-hint {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 10px 0 0;
+}
+
+/* Letras clicables durante la partida */
+.letter--clickable {
+  cursor: pointer;
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.85rem;
+  margin-top: 20px;
+}
