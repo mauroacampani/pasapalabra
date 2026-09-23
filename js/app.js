@@ -151,7 +151,7 @@ function renderQuestion() {
     el.currentLetter.textContent = "–";
     return;
   }
-  el.questionText.textContent = `(${current.letter}) ${current.question}`;
+  el.questionText.textContent = current.question;
   el.currentLetter.textContent = current.letter;
 }
 

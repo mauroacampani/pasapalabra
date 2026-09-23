@@ -51,25 +51,25 @@
         </div>
       </section>
 
-      <!-- Rosco + pregunta/respuesta -->
-      <section class="game">
+      <!-- Rosco + marcado -->
+      <section class="game game--single">
         <div class="card rosco-card" aria-label="Rosco de letras">
           <h2 class="card__title">Rosco</h2>
-          <!-- Las letras se generan desde js/app.js con buildRosco() -->
-          <ul class="rosco" id="rosco" aria-label="Letras del abecedario"></ul>
-          <p class="rosco__hint">Letra actual resaltada. Verde = correcta, rojo = incorrecta, gris = pasapalabra.</p>
-        </div>
-
-        <div class="card qa-card" aria-label="Pregunta y marcado manual">
-          <h2 class="card__title">Pregunta actual <span class="current-letter" id="current-letter">–</span></h2>
-          <p class="question" id="question-text" aria-live="polite">Aquí aparecerá la pregunta</p>
-
-          <div class="mark-row" role="group" aria-label="Marcar letra actual">
+          <div class="rosco-wrap">
+            <!-- Las letras se generan desde js/app.js con buildRosco() -->
+            <ul class="rosco" id="rosco" aria-label="Letras del abecedario"></ul>
+            <div class="rosco-center">
+              <span class="current-letter" id="current-letter">–</span>
+              <p class="question question--center" id="question-text" aria-live="polite">Aquí aparecerá la pregunta</p>
+            </div>
+          </div>
+          <div class="mark-row mark-row--under" role="group" aria-label="Marcar letra actual">
             <button class="btn btn--success" type="button" id="btn-correct" disabled>✓ Correcta</button>
             <button class="btn btn--danger" type="button" id="btn-wrong" disabled>✗ Incorrecta</button>
             <button class="btn btn--secondary" type="button" id="btn-pass" disabled>Pasapalabra</button>
           </div>
           <p class="mark-hint">Correcta / Incorrecta avanzan con el tiempo corriendo. Pasapalabra detiene el tiempo: pulsa Continuar para seguir.</p>
+          <p class="rosco__hint">Letra actual resaltada. Verde = correcta, rojo = incorrecta, gris = pasapalabra.</p>
         </div>
       </section>
     </main>
