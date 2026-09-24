@@ -242,6 +242,7 @@ function buildRosco() {
     li.dataset.index = String(index);
     li.title = `Letra ${item.letter}`;
     li.style.setProperty("--angle", `${angle}deg`);
+    li.style.setProperty("--angle-neg", `${-angle}deg`);
 
     el.rosco.appendChild(li);
   });
