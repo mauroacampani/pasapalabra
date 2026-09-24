@@ -9,6 +9,40 @@
   <script src="js/app.js" defer></script>
 </head>
 <body>
+  <!-- Pantalla inicial: elegir rosco -->
+  <div class="select-screen" id="select-screen">
+    <div class="select-card" role="dialog" aria-modal="true" aria-labelledby="select-title">
+      <h2 class="select-title" id="select-title">Elegí tu rosco</h2>
+      <p class="select-sub">4 roscos con preguntas distintas. Los 2 primeros son fáciles, los otros 2 son un desafío mayor.</p>
+      <div class="rosco-options" id="rosco-options">
+        <button class="rosco-option" type="button" data-rosco="0">
+          <span class="rosco-option__num">Rosco 1</span>
+          <span class="rosco-option__name">Primeras palabras</span>
+          <span class="level level--easy">Fácil</span>
+          <span class="rosco-option__desc">Animales y cosas de todos los días.</span>
+        </button>
+        <button class="rosco-option" type="button" data-rosco="1">
+          <span class="rosco-option__num">Rosco 2</span>
+          <span class="rosco-option__name">Juegos y comida</span>
+          <span class="level level--easy">Fácil</span>
+          <span class="rosco-option__desc">Juguetes, comida y lugares conocidos.</span>
+        </button>
+        <button class="rosco-option" type="button" data-rosco="2">
+          <span class="rosco-option__num">Rosco 3</span>
+          <span class="rosco-option__name">Exploradores</span>
+          <span class="level level--medium">Medio</span>
+          <span class="rosco-option__desc">Planetas, animales y naturaleza.</span>
+        </button>
+        <button class="rosco-option" type="button" data-rosco="3">
+          <span class="rosco-option__num">Rosco 4</span>
+          <span class="rosco-option__name">Reto de genios</span>
+          <span class="level level--hard">Difícil</span>
+          <span class="rosco-option__desc">Ciencia y palabras desafiantes.</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <div class="page">
     <header class="header">
       <h1 class="header__title">Pasapalabras</h1>
@@ -36,13 +70,14 @@
           <button class="btn btn--primary" type="button" id="btn-start">Iniciar</button>
           <button class="btn" type="button" id="btn-pause" disabled>Pausar</button>
           <button class="btn btn--ghost" type="button" id="btn-reset">Reiniciar</button>
+          <button class="btn btn--ghost" type="button" id="btn-change">Cambiar rosco</button>
         </div>
       </section>
 
       <!-- Rosco + marcado + estado -->
       <section class="game game--single">
         <div class="card rosco-card" aria-label="Rosco de letras">
-          <h2 class="card__title">Rosco</h2>
+          <h2 class="card__title">Rosco <span class="rosco-name" id="rosco-name"></span></h2>
           <div class="rosco-wrap">
             <!-- Las letras se generan desde js/app.js con buildRosco() -->
             <ul class="rosco" id="rosco" aria-label="Letras del abecedario"></ul>
