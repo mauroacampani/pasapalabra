@@ -140,7 +140,7 @@ const ROSCOS = [
       C: { question: "Empieza por C: Animal que cambia de color para esconderse.", answer: "Camaleón" },
       D: { question: "Empieza por D: Dinosaurio gigante de cuello larguísimo.", answer: "Diplodocus" },
       E: { question: "Empieza por E: Momento en que la Luna tapa al Sol.", answer: "Eclipse" },
-      F: { question: "Empieza por F: Proceso con el que las plantas cocinan con el sol.", answer: "Fotosíntesis" },
+      F: { question: "Empieza por F: Proceso con el que las plantas fabrican su propio alimento usando el sol.", answer: "Fotosíntesis" },
       G: { question: "Empieza por G: Fuerza invisible que nos pega al suelo.", answer: "Gravedad" },
       H: { question: "Empieza por H: Parte dura del cuerpo que nos sostiene.", answer: "Hueso" },
       I: { question: "Empieza por I: Bichito de 6 patas, como la hormiga.", answer: "Insecto" },
