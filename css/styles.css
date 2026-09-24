@@ -486,6 +486,15 @@ body {
   line-height: 1.35;
 }
 
+.answer-reveal {
+  margin: 6px 0 0;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+  line-height: 1.3;
+  overflow-wrap: break-word;
+}
+
 .mark-row {
   display: flex;
   flex-wrap: wrap;
@@ -605,6 +614,21 @@ body {
 
   .rosco-option {
     padding: 12px;
+  }
+}
+
+/* Chrome Android: blur a pantalla completa + doble scroll = artefactos.
+   En táctil: fondo sólido, sin blur y un solo scroll (el del overlay). */
+@media (hover: none) {
+  .select-screen {
+    background: var(--bg);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .select-card {
+    max-height: none;
+    overflow-y: visible;
   }
 }
 

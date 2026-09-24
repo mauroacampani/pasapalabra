@@ -262,16 +262,19 @@ function renderQuestion() {
   // Antes de jugar o al reiniciar: placeholder.
   if (!state.isPlaying) {
     el.questionText.textContent = "Aquí aparecerá la pregunta";
+    el.answerText.textContent = "";
     el.currentLetter.textContent = "–";
     return;
   }
   const current = state.letters[state.currentIndex];
   if (!current) {
     el.questionText.textContent = "Aquí aparecerá la pregunta";
+    el.answerText.textContent = "";
     el.currentLetter.textContent = "–";
     return;
   }
   el.questionText.textContent = current.question;
+  el.answerText.textContent = current.answer || "";
   el.currentLetter.textContent = current.letter;
 }
 
@@ -565,6 +568,7 @@ function endGame(reason) {
       `Pulsa Reiniciar para volver a jugar.`;
   }
   el.currentLetter.textContent = "–";
+  el.answerText.textContent = "";
 }
 
 /* ---------- Init ---------- */
@@ -578,6 +582,7 @@ function cacheDom() {
   el.score = document.getElementById("score");
   el.rosco = document.getElementById("rosco");
   el.questionText = document.getElementById("question-text");
+  el.answerText = document.getElementById("answer-text");
   el.currentLetter = document.getElementById("current-letter");
   el.btnCorrect = document.getElementById("btn-correct");
   el.btnWrong = document.getElementById("btn-wrong");
