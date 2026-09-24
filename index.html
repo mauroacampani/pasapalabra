@@ -39,19 +39,7 @@
         </div>
       </section>
 
-      <!-- Estado: temporizador y aciertos -->
-      <section class="card status" aria-label="Estado de la partida">
-        <div class="status__item">
-          <span class="status__label">Tiempo restante</span>
-          <span class="timer" id="timer" aria-live="polite">60</span>
-        </div>
-        <div class="status__item">
-          <span class="status__label">Aciertos</span>
-          <span class="score" id="score" aria-live="polite">Correctas: 0</span>
-        </div>
-      </section>
-
-      <!-- Rosco + marcado -->
+      <!-- Rosco + marcado + estado -->
       <section class="game game--single">
         <div class="card rosco-card" aria-label="Rosco de letras">
           <h2 class="card__title">Rosco</h2>
@@ -63,12 +51,20 @@
               <p class="question question--center" id="question-text" aria-live="polite">Aquí aparecerá la pregunta</p>
             </div>
           </div>
+          <div class="rosco-status rosco-status--compact" aria-label="Estado de la partida">
+            <div class="status__item status__item--left">
+              <span class="timer timer--sm" id="timer" role="timer" aria-label="Tiempo restante" aria-live="polite">60</span>
+            </div>
+            <div class="status__item status__item--right">
+              <span class="score score--sm score--badge" id="score" aria-label="Respuestas correctas" aria-live="polite">0</span>
+            </div>
+          </div>
           <div class="mark-row mark-row--under" role="group" aria-label="Marcar letra actual">
             <button class="btn btn--success" type="button" id="btn-correct" disabled>✓ Correcta</button>
             <button class="btn btn--danger" type="button" id="btn-wrong" disabled>✗ Incorrecta</button>
             <button class="btn btn--secondary" type="button" id="btn-pass" disabled>Pasapalabra</button>
           </div>
-          <p class="mark-hint">Correcta / Incorrecta avanzan con el tiempo corriendo. Pasapalabra detiene el tiempo: pulsa Continuar para seguir.</p>
+          <p class="mark-hint">Correcta avanza con el tiempo corriendo. Incorrecta y Pasapalabra detienen el tiempo: pulsa Continuar para seguir.</p>
           <p class="rosco__hint">Letra actual resaltada. Verde = correcta, rojo = incorrecta, gris = pasapalabra.</p>
         </div>
       </section>

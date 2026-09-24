@@ -199,6 +199,57 @@ body {
   align-items: center;
 }
 
+.rosco-status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.rosco-status--compact {
+  margin: 10px auto 0;
+  padding: 8px 4px 0;
+  border-top: 0;
+  max-width: 420px;
+  gap: 8px;
+}
+
+.rosco-status--compact .status__item {
+  gap: 8px;
+}
+
+.rosco-status--compact .status__label {
+  font-size: 0.72rem;
+}
+
+.timer--sm {
+  font-size: 1.25rem;
+  min-width: 62px;
+  padding: 2px 10px;
+  border-radius: 10px;
+}
+
+.score--sm {
+  font-size: 0.95rem;
+}
+
+.score--sm.score--badge {
+  padding: 4px 12px;
+}
+
+.status__item--left {
+  justify-content: flex-start;
+}
+
+.status__item--right {
+  justify-content: flex-end;
+  margin-left: auto;
+}
+
 .status__item {
   display: flex;
   align-items: baseline;
@@ -236,6 +287,17 @@ body {
 .score {
   font-size: 1.1rem;
   font-weight: 700;
+}
+
+.score--badge {
+  background: var(--correct-bg);
+  color: var(--correct-text);
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  min-width: 44px;
+  text-align: center;
 }
 
 /* ---------- Game grid ---------- */

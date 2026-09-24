@@ -2,9 +2,9 @@
    Pasapalabras — app.js
    Modo manual:
    - Iniciar muestra la primera pregunta y arranca el tiempo.
-   - Correcta / Incorrecta avanzan a la siguiente (tiempo sigue).
-   - Pasapalabra marca la letra en gris, DETIENE el tiempo y
-     deja la siguiente pregunta lista. Continuar reanuda.
+   - Correcta avanza a la siguiente (tiempo sigue).
+   - Incorrecta y Pasapalabra avanzan pero DETIENEN el tiempo.
+     Continuar reanuda.
    ========================================================== */
 
 "use strict";
@@ -135,7 +135,7 @@ function renderTimer() {
 }
 
 function renderScore() {
-  el.score.textContent = `Correctas: ${state.correctCount}`;
+  el.score.textContent = String(state.correctCount);
 }
 
 function renderQuestion() {
@@ -286,18 +286,24 @@ function markCorrect() {
   markCurrent(STATUS.CORRECT);
 }
 
+/** Marca la letra actual en rojo, avanza y DETIENE el tiempo (igual que Pasapalabra). */
 function markIncorrect() {
-  markCurrent(STATUS.INCORRECT);
+  markAndPause(STATUS.INCORRECT);
 }
 
 function passWord() {
+  markAndPause(STATUS.PASSED);
+}
+
+/** Marca con el estado dado, muestra la siguiente y pausa hasta pulsar Continuar. */
+function markAndPause(status) {
   if (!state.isPlaying || state.isPaused) return;
   const current = state.letters[state.currentIndex];
   if (!current) return;
   if (current.status === STATUS.CORRECT || current.status === STATUS.INCORRECT) return;
 
-  // 1. Marca la letra actual en gris.
-  current.status = STATUS.PASSED;
+  // 1. Marca la letra actual (gris = pasada, rojo = incorrecta).
+  current.status = status;
 
   // 2. Busca la siguiente pendiente/pasada.
   const next = findNextUnresolvedIndex(state.currentIndex);
